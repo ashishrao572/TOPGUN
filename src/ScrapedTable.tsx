@@ -4,9 +4,11 @@ import ExcelJS from 'exceljs';
 
 const { getCurrentIndianQuarter, getPreviousIndianQuarter } = FinancialPeriod;
 
+const SERVER_URL = import.meta.env.VITE_SERVER_URL;
+
 function formatQuarterString(qtrObj: { quarter: string; financialYear: number }) {
   return `${qtrObj.quarter} ${qtrObj.financialYear}`;
-}
+} 
 
 function ScrapedTable() {
   const current = getCurrentIndianQuarter();
@@ -26,7 +28,7 @@ function ScrapedTable() {
     setLoading(true);
     const q = encodeURIComponent(selectedQuarter);
     const fy = encodeURIComponent(String(selectedFY));
-    fetch(`http://localhost:5000/portfolio?quarter=${q}&fy=${fy}`)
+    fetch(`${SERVER_URL}/portfolio?quarter=${q}&fy=${fy}`)
       .then((res) => res.json())
       .then((data) => {
         setRows(data || []);
