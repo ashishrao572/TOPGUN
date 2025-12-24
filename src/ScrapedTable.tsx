@@ -1,5 +1,5 @@
-import React, { useEffect, useMemo, useState } from 'react';
-import FinancialPeriod from './FinancialPeriod.js';
+import { useEffect, useMemo, useState } from 'react';
+import FinancialPeriod from './FinancialPeriod';
 import ExcelJS from 'exceljs';
 
 const { getCurrentIndianQuarter, getPreviousIndianQuarter } = FinancialPeriod;
@@ -15,7 +15,7 @@ function ScrapedTable() {
   const [rows, setRows] = useState<any[][]>([]);
   const [loading, setLoading] = useState(true);
   const [selectedQuarter, setSelectedQuarter] = useState<string>(current.quarter);
-  const [selectedFY, setSelectedFY] = useState<number>(current.financialYear);
+  const [selectedFY] = useState<number>(current.financialYear);
 
   // Build headers once to avoid duplicates on re-render
   const headers = useMemo(() => {
