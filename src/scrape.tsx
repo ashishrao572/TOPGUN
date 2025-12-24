@@ -4,10 +4,13 @@ function ScraperButton() {
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(false);
 
+  // Read server base URL from environment (Vite: VITE_SERVER_URL) with fallback to default
+  const SERVER_URL = import.meta.env.VITE_SERVER_URL;
+  
   const handleScrape = async () => {
     setLoading(true);
     try {
-      const response = await fetch('http://localhost:5000/portfolio');
+      const response = await fetch(`${SERVER_URL}/portfolio`);
 
       const result = await response.json();
       console.log(result);
