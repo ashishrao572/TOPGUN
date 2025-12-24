@@ -1,12 +1,12 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 
 function ScraperButton() {
-  const [data, setData] = useState([]);
+  const [data, setData] = useState<any[][]>([]);
   const [loading, setLoading] = useState(false);
 
   // Read server base URL from environment (Vite: VITE_SERVER_URL) with fallback to default
   const SERVER_URL = import.meta.env.VITE_SERVER_URL;
-  
+
   const handleScrape = async () => {
     setLoading(true);
     try {

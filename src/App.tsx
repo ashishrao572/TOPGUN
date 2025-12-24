@@ -1,5 +1,4 @@
-import { useState } from 'react'
-import './App.css'
+import './App.css' 
 import ScrapedTable from './ScrapedTable'; // adjust path if needed
 
 function App() {
